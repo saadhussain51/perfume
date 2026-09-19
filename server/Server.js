@@ -15,11 +15,11 @@ app.use("/Images", express.static(path.join(__dirname, "Images")));
 app.use(cors());
 app.use(bodyParser.json());
 
-// OracleDB Config
+// OracleDB Config using Environment Variables
 const dbConfig = {
-    user: "system",
-    password: "Sajid@143db",
-    connectString: "localhost/orcl"
+    user: process.env.DB_USER || "system",
+    password: process.env.DB_PASSWORD || "Sajid@143db",
+    connectString: process.env.DB_CONNECTION_STRING || "localhost/orcl"
 };
 
 let connection;
