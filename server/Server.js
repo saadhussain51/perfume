@@ -11,10 +11,15 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Serve static files from root directory
+app.use(express.static(path.join(__dirname, "../")));
+app.use("/Images", express.static(path.join(__dirname, "../Images")));
+
 // Root route to serve LoginSignup.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
+    res.sendFile(path.resolve(__dirname, '../HTML/LoginSignup.html'));
 });
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
@@ -33,11 +38,6 @@ async function connectToDB() {
     }
 }
 connectToDB();
-
-// Root route to serve LoginSignup.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
-});
 
 // 🧴 API to fetch products by category
 app.get("/api/products", async (req, res) => {
