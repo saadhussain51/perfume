@@ -7,18 +7,18 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "HTML")));
-app.use("/Images", express.static(path.join(__dirname, "Images")));
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// PostgreSQL Pool Connection using Railway's DATABASE_URL
+// Serve static files from root directory (HTML, CSS, JS, Images)
+app.use(express.static(path.join(__dirname, "../")));
+app.use("/Images", express.static(path.join(__dirname, "../Images")));
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+    ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
+    connectionTimeoutMillis: 5000 // 5 seconds timeout if connection fails
 });
 
 // Test Database Connection on Startup
@@ -33,6 +33,11 @@ async function connectToDB() {
     }
 }
 connectToDB();
+
+// Root route to serve LoginSignup.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
+});
 
 // 🧴 API to fetch products by category
 app.get("/api/products", async (req, res) => {
@@ -89,7 +94,6 @@ app.post('/api/updateOrderStatus', async (req, res) => {
         return res.status(400).json({ error: 'Order ID and new status are required.' });
     }
     try {
-        // Calling PostgreSQL function or procedure
         const result = await pool.query(
             `SELECT update_order_and_payment_status($1, $2)`,
             [orderId, newStatus]
@@ -204,7 +208,6 @@ app.post('/api/register', async (req, res) => {
             return res.json({ success: false, message: 'Username already exists.' });
         }
 
-        // Call registration function/procedure
         await pool.query(
             `SELECT RegisterProcedure($1, $2, 'Customer')`,
             [username, password]
@@ -359,7 +362,6 @@ app.get('/api/dashboard', async (req, res) => {
       averageOrderValue,
       lowStock
     ] = await Promise.all([
-
       pool.query(`SELECT PerfumeName, SUM(OrderedQuantity) AS UnitsSold, SUM(TotalPrice) AS TotalSales FROM SALESDASHBOARD GROUP BY PerfumeName ORDER BY SUM(TotalPrice) DESC LIMIT 5`),
       pool.query(`SELECT SUM(TotalPrice) AS TotalRevenue FROM SALESDASHBOARD WHERE ORDERSTATUS IN ('Delivered')`),
       pool.query(`SELECT CustomerName, City, SUM(TotalPrice) AS TotalSpent FROM SALESDASHBOARD GROUP BY CustomerName, City ORDER BY SUM(TotalPrice) DESC LIMIT 5`),
@@ -371,7 +373,6 @@ app.get('/api/dashboard', async (req, res) => {
       pool.query(`SELECT COUNT(*) AS TotalPerfumes FROM PERFUME`),
       pool.query(`SELECT ROUND(AVG(TotalPrice), 2) AS AvgOrderValue FROM SALESDASHBOARD WHERE ORDERSTATUS NOT IN ('Cancelled')`),
       pool.query(`SELECT COUNT(*) AS LowStock FROM PERFUME WHERE PERFUMESTOCK <= 500`)
-
     ]);
 
     res.json({
@@ -392,7 +393,7 @@ app.get('/api/dashboard', async (req, res) => {
     console.error("Error in /api/dashboard:", err);
     res.status(500).json({ error: "Database error" });
   }
-})
+});
 
 app.post('/api/inventory-update', async (req, res) => {
   const { perfumeId, managerId, changeLog, quantityChanged, remarks } = req.body;
@@ -403,15 +404,13 @@ app.post('/api/inventory-update', async (req, res) => {
       [perfumeId, managerId, changeLog, quantityChanged, remarks]
     );
     res.status(200).json({ message: 'Inventory update successful!' });
-  } catch (err) {  // <-- Yahan 'catch (err)' aayega
+  } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error updating inventory', error: err.message });
   }
 });
-// Static files serve karne ke liye (agar pehle se nahi hai)
-app.use(express.static(path.join(__dirname, '../')));
 
-// Root route par LoginSignup.html ya apna main page kholne ke liye
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
+// Start Server
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
 });
