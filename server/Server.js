@@ -408,14 +408,3 @@ app.post('/api/inventory-update', async (req, res) => {
     res.status(500).json({ message: 'Error updating inventory', error: err.message });
   }
 });
-
-app.listen(PORT, () => console.log(`🚀 Server running at port ${PORT}`));
-const path = require('path');
-
-// Static files (HTML, CSS, JS) ko serve karne ke liye
-app.use(express.static(path.join(__dirname, '../'))); // Root folder ko public kar dega
-
-// Agar koi root link khole toh LoginSignup.html ya Dashboard.html dikhaye
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html')); // Ya jo bhi aapka main page ho
-});
