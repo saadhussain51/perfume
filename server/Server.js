@@ -403,7 +403,7 @@ app.post('/api/inventory-update', async (req, res) => {
       [perfumeId, managerId, changeLog, quantityChanged, remarks]
     );
     res.status(200).json({ message: 'Inventory update successful!' });
-  } async (err) => {
+  } catch (err) {  // <-- Yahan 'catch (err)' aayega
     console.error(err);
     res.status(500).json({ message: 'Error updating inventory', error: err.message });
   }
