@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend for Perfume Store project using Node.js and OracleDB",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server.js"
+  },
+  "keywords": [
+    "perfume",
+    "store",
+    "backend",
+    "nodejs",
+    "oracle",
+    "express"
+  ],
+  "author": "Muhammad Sajid",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "oracledb": "^6.8.0"
+  }
+}

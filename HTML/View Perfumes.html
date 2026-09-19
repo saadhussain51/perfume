@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+    <link rel="stylesheet" href="../CSS/ViewPerfumes.css">
+</head>
+<body>
+    <h2>PERFUMES LIST</h2>
+    <button onclick="fetchPerfumes()">Load Perfumes</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Perfume ID </th>
+                <th>Perfume Name</th>
+                <th>Perfume Description</th>
+                <th>Perfume Price </th>
+                <th>Perfume Stock</th>
+                <th>Perfume Category</th>
+                <th>Gender</th>
+                <th>Lasting Hours </th>
+            </tr>
+        </thead>
+        <tbody id="orderTableBody">
+        </tbody>
+    </table>
+
+    <script src="../javascript/ViewPerfume.js"></script>
+</body> 

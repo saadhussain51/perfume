@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+} 
+
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  padding: 40px;
+} 
+
+h2 {
+  text-align: center;
+  color: #4d9fff;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-shadow: 1px 1px #ddd;
+}
+
+.container {
+  display: flex;
+  max-width: 1100px;
+  margin: auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.left, .right {
+  width: 50%;
+  padding: 30px;
+}
+
+.left {
+  background: lightgray;
+}
+
+.right {
+  background: white;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #4d9fff;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: bolder;
+}
+
+input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row .form-group {
+  flex: 1;
+}
+
+.input-small input {
+  width: 100%;
+}
+
+.checkout-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px 0;
+  border-top: 2px dashed #ccc;
+}
+
+button {
+  background-color: #4d9fff;
+  color: white;
+  padding: 14px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #4a148c;
+}
+
+input[readonly] {
+  background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .left, .right {
+    width: 100%;
+  }
+} 
+
+/* Confirmation Section */
+#confirmation {
+  display: none; 
+  max-width: 900px; 
+  margin: auto; 
+  padding: 30px;
+}
+
+#confirmation h2 {
+  text-align: center; 
+  color: #4a148c;
+}

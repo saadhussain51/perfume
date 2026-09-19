@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZ Perfume Store</title>
+    <link rel="stylesheet" href="../CSS/Style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><strong>SZ Perfume Store</strong></div>
+        <div id="CustomerID" style="text-align: left;"><strong>Customer ID: </strong><span id="customerIdValue"></span></div>
+        <ul>
+          <li onclick="loadAllProducts()">Home</li>
+          <li onclick="window.location.href='CustomerOrders.html'">My Orders</li>
+          <li onclick="navigate('about')">About Us</li>
+          <li onclick="navigate('contact')">Contact</li>
+        </ul>
+      </nav>
+
+      <aside class="sidebar">
+        <h3>Gender</h3>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="Men"> Male</label><br>
+            <label><input type="radio" name="gender" value="Women"> Female</label>
+        </div>
+        <div style='margin-bottom: 40px;'></div>
+      
+        <h3>Fragrance Category</h3>
+        <div class="radio-group">
+            <label><input type="radio" name="fragrance" value="Amber"> Amber</label><br>
+            <label><input type="radio" name="fragrance" value="Oriental"> Oriental</label><br>
+            <label><input type="radio" name="fragrance" value="Citrus"> Citrus</label><br>
+            <label><input type="radio" name="fragrance" value="Spicy"> Spicy</label><br>
+            <label><input type="radio" name="fragrance" value="Fruity"> Fruity</label><br>
+            <label><input type="radio" name="fragrance" value="Musky"> Musky</label>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+    </aside>
+    
+      <main class="main-content">
+        <div class="product-container"></div>
+          <!-- <div class="product-card"> -->
+            <!-- <img src="../Images/WOMEN/AMBER/Pour FEMME - 1.webp" class="product-image" alt="Perfume 3">
+            <div class="product-title">Femme Essence</div>
+            <div class="product-description">Delicate notes of floral and musk.</div>
+            <div class="product-price">$42 <span class="product-old-price">$55</span></div>
+            <a href="#" class="buy-now">Buy Now</a>
+          </div> -->
+        <!-- </div> -->
+    </div>
+   </main>
+ 
+<script src="../javascript/script.js"></script>
+</body>
+</html> 

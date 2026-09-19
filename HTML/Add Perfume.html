@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add New Perfume</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .perfume-form-box {
+      background: #fff;
+      padding: 40px 35px;
+      width: 480px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .perfume-form-box h2 {
+      margin-bottom: 25px;
+      color: #4d9fff;
+      font-size: 28px;
+    }
+
+    .input-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      padding: 10px 15px;
+    }
+
+    .input-group i {
+      margin-right: 12px;
+      color: #4d9fff;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 15px;
+    }
+
+    .input-group textarea {
+      resize: none;
+      height: 70px;
+    }
+
+    .login-btn {
+      background-color: #4d9fff;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .login-btn:hover {
+      background-color: #338ae6;
+    }
+  </style>
+</head>
+<body>
+  <div class="perfume-form-box">
+    <h2>Add New Perfume</h2>
+
+    <div class="input-group">
+      <i class="fas fa-spray-can"></i>
+      <input type="text" id = "perfumeName" placeholder="Perfume Name" />
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-align-left"></i>
+      <textarea id="perfumeDescription" placeholder="Perfume Description"></textarea>
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-dollar-sign"></i>
+      <input type="number" id="perfumePrice"  placeholder="Perfume Price" />
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-boxes"></i>
+      <input type="number" id="perfumeStock" placeholder="Perfume Stock" />
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-image"></i>
+      <input type="text" id="imagePath" placeholder="Image Path (e.g., /images/perfume.jpg)" />
+    </div>
+
+    <div class="input-group">
+  <i class="fas fa-venus-mars"></i>
+  <select id="genderCategory" style="width: 100%; border: none; outline: none; background: none; font-size: 15px;">
+    <option value="" disabled selected>Gender Category</option>
+    <option value="1">Men</option>
+    <option value="2">Women</option>
+  </select>
+</div>
+
+<div class="input-group">
+  <i class="fas fa-leaf"></i>
+  <select id="fragranceCategory" style="width: 100%; border: none; outline: none; background: none; font-size: 15px;">
+    <option value="" disabled selected>Fragrance Category</option>
+    <option value="1">Amber</option>
+    <option value="4">Musky</option>
+    <option value="5">Fruity</option>
+    <option value="3">Oriental</option>
+    <option value="2">Spicy</option>
+    <option value="6">Citrus</option>
+  </select>
+</div>
+    <button class="login-btn" id="submitBtn">Add Perfume</button>
+  </div>
+  <script src="../javascript/AddPerfume.js"></script>
+</body>
+</html>
+

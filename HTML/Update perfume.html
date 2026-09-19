@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Update Order Prices</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      background: #fff;
+      padding: 40px 35px;
+      width: 500px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-box h2 {
+      margin-bottom: 25px;
+      color: #4d9fff;
+      font-size: 28px;
+    }
+
+    .input-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      padding: 10px 15px;
+    }
+
+    .input-group i {
+      margin-right: 12px;
+      color: #4d9fff;
+    }
+
+    .input-group input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 15px;
+    }
+
+    .submit-btn {
+      background-color: #4d9fff;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #338ae6;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Update Perfume Prices</h2>
+
+    <div class="input-group">
+      <i class="fas fa-barcode"></i>
+      <input type="number" placeholder="Perfume ID" />
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-user-shield"></i>
+      <input type="number" placeholder="Manager ID" />
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-dollar-sign"></i>
+      <input type="number" placeholder="Updated Price" step="0.01" />
+    </div>
+
+    <button class="submit-btn">Update Price</button>
+  </div>
+</body>
+
+<script>
+  document.querySelector(".submit-btn").addEventListener("click", async () => {
+    const perfumeId = document.querySelectorAll("input")[0].value.trim();
+    const managerId = document.querySelectorAll("input")[1].value.trim();
+    const updatedPrice = document.querySelectorAll("input")[2].value.trim();
+
+    // Basic validation
+    if (!perfumeId || !managerId || !updatedPrice) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Manager check
+    if (managerId !== "1") {
+      alert("Only Manager with ID 1 is allowed to update prices.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/update-price", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          perfumeId: parseInt(perfumeId),
+          updatedPrice: parseFloat(updatedPrice)
+        })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert("✅ Price updated successfully.");
+      } else {
+        alert("❌ Failed to update price: " + result.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ An error occurred while updating.");
+    }
+  });
+</script>
+</html>

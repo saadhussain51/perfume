@@ -1,0 +1,125 @@
+/* === GLOBAL RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === BODY === */
+body {
+    display: flex;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f172a; /* dark background for neon effect */
+    color: #ffffff;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 260px;
+    background-color: #111827;
+    color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    box-shadow: 0 0 10px #00ffe1aa;
+    border-right: 1px solid #1e293b;
+}
+
+.sidebar-header {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #fff;
+    box-shadow: 0 0 10px #00ffe1aa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* === SECTION HEADINGS === */
+.section {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.section h3 {
+    font-size: 14px;
+    color: #00ffe1aa;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* === SIDEBAR LINKS === */
+.section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.section ul li a {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #1e293b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    border: 1px solid #334155;
+    box-shadow: 0 0 5px rgba(0, 204, 255, 0.2);
+}
+
+.section ul li a:hover {
+    background-color: #00ffe1aa;
+    color: #ffffff;
+    box-shadow: 0 0 10px #00ffe1aa;
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+}
+
+/* === HEADER === */
+.top-header {
+    background-color: #0f172a;
+    color: #38bdf8;
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #1e40af;
+    text-shadow: 0 0 8px #38bdf8;
+}
+
+/* === DASHBOARD CONTENT === */
+.dashboard-content {
+    padding: 30px;
+    color: #f1f5f9;
+}
+
+/* === IFRAME === */
+iframe#main-frame {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 80%;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}

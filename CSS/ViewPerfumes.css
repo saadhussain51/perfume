@@ -1,0 +1,131 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+    margin: 20px;
+}
+
+h2{
+    color: #4d9fff;
+}
+/* Table Styling */
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: auto; /* Let the table grow based on content */
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align :justify;
+}
+
+/* Header Row */
+thead {
+    background-color: #4d9fff;
+    color: white;
+    font-size: 18px;
+}
+
+/* Alternating Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background-color: #d3e3fd;
+}
+
+/* Button Styling */
+button {
+    background-color: #4d9fff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.order-status-dropdown {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+}
+
+    .receipt-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom right, #ffffff, #f1f7ff);
+  padding: 30px;
+  width: 400px;
+  border: 2px solid #007bff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2);
+  z-index: 999;
+  display: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.receipt-popup h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #007bff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.receipt-popup p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.receipt-popup p span {
+  font-weight: 600;
+  color: #0056b3;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 998;
+}
+
+.close-btn {
+  background: #dc3545;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #c82333;
+}

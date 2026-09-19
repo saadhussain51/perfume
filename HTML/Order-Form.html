@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SZ Perfume Store - Order Form</title>
+  <link rel="stylesheet" href="../CSS/OrderFormStyle.css">
+</head>
+<body>
+
+  <form id="orderForm">
+    <h2>SZ Perfume Store - Order Form</h2>
+    <div class="container">
+
+       <!-- Left Column: Personal Info  -->
+      <div class="left">
+        <div class="section-title">Personal Information</div>
+
+        <!-- Name Fields  -->
+        <div class="input-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+
+        <!-- Address Fields (smaller)  -->
+        <div class="input-row">
+          <div class="form-group input-small">
+            <label for="street">Street</label>
+            <input type="text" id="street" name="street" required>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group input-small">
+            <label for="mohalla">Mohalla</label>
+            <input type="text" id="mohalla" name="mohalla" required>
+          </div>
+          <div class="form-group input-small">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+
+          <div class="form-group input-small">
+            <label for="province">Province</label>
+            <input type="text" id="province" name="province" required>
+          </div>
+        </div>
+
+        <!-- Contact  -->
+        <div class="form-group">
+          <label for="email">Username</label>
+          <input type="number" id="email" name="email" placeholder="Your Customer ID" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="03XXXXXXXXX" required>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Info  -->
+      <div class="right">
+        <div class="section-title">Order Information</div>
+
+        <div class="form-group">
+          <label for="perfumeID">Perfume ID</label>
+          <input type="text" id="perfumeID" name="perfumeID" readonly>
+        </div>
+        <div class="form-group">
+          <label for="product">Perfume Name</label>
+          <input type="text" id="product" name="product" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="packagingType">Packaging Type</label>
+          <select id="packagingType" name="packagingType" required>
+            <option value="1">Classic Packaging - $0</option>
+            <option value="2">Gift Packaging - $500</option>
+            <option value="3">Signature Luxury Packaging - $1500</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Product Price ($)</label>
+          <input type="text" id="price" name="price" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1" placeholder="1" required>
+        </div>
+        <div class="form-group">
+          <label for="total">Total Bill ($)</label>
+          <input type="text" id="total" name="total" readonly>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Button  -->
+    <div class="checkout-container">
+      <button type="submit">🛒 Checkout</button>
+
+    </div>
+  </form>
+
+  <script src="../javascript/script.js"></script>
+</body>
+</html>

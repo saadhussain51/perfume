@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZ Perfume Store Admin</title>
+    <link rel="stylesheet" href="../CSS/SidebarStyle.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">SZ Perfume Store</div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+        <div class="section">
+            <h3>Sales Dashboard Section</h3>
+            <ul>
+                <li><a href="#" onclick="loadPage('Dashboard.html')">View Dashboard</a></li>
+            </ul>
+
+        </div>
+
+        <div class="section">
+            <h3>Product Management</h3>
+            <ul>
+                <li><a href="#" onclick="loadPage('Add Perfume.html')">Add New Perfume</a></li>
+                <li><a href="#" onclick="loadPage('Update perfume.html')">Update Perfumes Price</a></li>
+                <li><a href="#" onclick="loadPage('View Perfumes.html')">View All Perfumes</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Order Management</h3>
+            <ul>
+                <li><a href="#" onclick="loadPage('Incompleted Orders.html')">View Incompleted Orders</a></li>
+                <li><a href="#" onclick="loadPage('Completed Orders.html')">View Completed Orders</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Inventory Management</h3>
+            <ul>
+                <li><a href="#" onclick="loadPage('Add Stock.html')">Update Inventory Changes</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Customer Management</h3>
+            <ul>
+                <li><a href="#" onclick="loadPage('Customers.html')">Manage Customers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-header">Admin Side</div>
+        <iframe id="main-frame" src="" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded" , () =>{
+            loadPage("Dashboard.html");
+
+        });
+        function loadPage(page) {
+            document.getElementById('main-frame').src = page;
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "LoginSignup.html"; // Adjust path if needed
+            }
+    </script>
+</body>
+</html>
