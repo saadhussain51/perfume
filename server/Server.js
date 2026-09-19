@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serve static files from root directory (HTML, CSS, JS, Images)
-app.use(express.static(path.join(__dirname, "../")));
-app.use("/Images", express.static(path.join(__dirname, "../Images")));
-
+// Root route to serve LoginSignup.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
+});
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
