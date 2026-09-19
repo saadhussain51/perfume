@@ -408,3 +408,10 @@ app.post('/api/inventory-update', async (req, res) => {
     res.status(500).json({ message: 'Error updating inventory', error: err.message });
   }
 });
+// Static files serve karne ke liye (agar pehle se nahi hai)
+app.use(express.static(path.join(__dirname, '../')));
+
+// Root route par LoginSignup.html ya apna main page kholne ke liye
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../HTML/LoginSignup.html'));
+});
